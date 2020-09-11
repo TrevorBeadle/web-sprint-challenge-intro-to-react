@@ -6,7 +6,8 @@ const StyledCharacter = styled.article`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgb(93, 93, 90, 0.8);
+  background-color: rgb(93, 93, 90, 0.9);
+  border-radius: 1rem;
   min-width: 40%;
   margin: 2rem;
   line-height: 2rem;
@@ -32,6 +33,7 @@ export default function Character(props) {
         <li>Birth Year: {props.birthYear}</li>
         <li>Eye Color: {props.eyeColor}</li>
         <li>Hair Color: {props.hairColor}</li>
+        <li>Skin Color: {props.skinColor}</li>
       </ul>
     </StyledCharacter>
   );

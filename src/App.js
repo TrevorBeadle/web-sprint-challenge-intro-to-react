@@ -31,6 +31,7 @@ const App = () => {
             birthYear={item.birth_year}
             eyeColor={item.eye_color}
             hairColor={item.hair_color}
+            skinColor={item.skin_color}
           />
         );
       })}
