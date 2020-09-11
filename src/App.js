@@ -1,19 +1,52 @@
-import React from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+import Character from "./components/Character";
 
 const App = () => {
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [height, setHeight] = useState("");
+  const [birthYear, setBirthYear] = useState("");
+  const [eyeColor, setEyeColor] = useState("");
+  const [hairColor, setHairColor] = useState("");
+  const [characterList, setCharacterList] = useState([]);
 
-  // Fetch characters from the API in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
+  useEffect(() => {
+    axios
+      .get("https://swapi.dev/api/people")
+      .then((res) => {
+        setCharacterList(res.data.results);
+        setName(res.data.results.name);
+        setGender(res.data.results.gender);
+        setHeight(res.data.results.height);
+        setBirthYear(res.data.results.birth_year);
+        setEyeColor(res.data.results.eye_color);
+        setHairColor(res.data.results.hair_color);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      <header>
+        <h1>Characters</h1>
+      </header>
+      {characterList.map((item) => {
+        return (
+          <Character
+            key={item.name}
+            name={item.name}
+            gender={item.gender}
+            height={item.height}
+            birthYear={item.birth_year}
+            eyeColor={item.eye_color}
+            hairColor={item.hair_color}
+          />
+        );
+      })}
     </div>
   );
-}
+};
 
 export default App;
