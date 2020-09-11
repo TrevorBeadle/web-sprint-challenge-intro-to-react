@@ -4,15 +4,19 @@ import styled from "styled-components";
 
 const StyledCharacter = styled.article`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.7);
-  min-width: 50%;
+  background-color: rgb(93, 93, 90, 0.8);
+  min-width: 40%;
   margin: 2rem;
   line-height: 2rem;
+  color: white;
   ul {
-    max-width: 50%;
+    font-size: 1rem;
+    max-width: 60%;
+    text-transform: capitalize;
+  }
+  h2 {
   }
 `;
 
@@ -23,6 +27,7 @@ export default function Character(props) {
       <h2>{props.name}</h2>
       <ul>
         <li>Gender: {props.gender}</li>
+        <li>Mass: {props.mass}</li>
         <li>Height: {props.height}</li>
         <li>Birth Year: {props.birthYear}</li>
         <li>Eye Color: {props.eyeColor}</li>
